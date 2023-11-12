@@ -21,9 +21,8 @@ function addFriend(){
             btn.classList.add('flex');
             rotateCircle.style.display = 'none';
             btn.innerHTML = 'Add Friend +';
-            lower.style.display = 'none'
+            lower.style.display = 'none';
         },2000)
-
     }else{
         isFriend = true
         setTimeout(()=>{
@@ -43,21 +42,24 @@ function addFriend(){
 }
 
 card.addEventListener('dblclick',function(){
-    heart.style.visibility = 'visible';
-    heart.style.width = '75px';
-    setTimeout(()=>{
-        heart.style.width = '55px';
-        heartFillonDoubleTap();
-    },200)
-    setTimeout(()=>{
-        heart.style.width = '80px';
-    },350)
-    setTimeout(()=>{
-        heart.style.visibility = 'hidden';
-    },800)
-    setTimeout(()=>{
-        heart.style.width = '60px';
-    },1200)
+
+    if(isFriend){
+
+        heart.style.transform = 'translate(-50%,-50%) scale(1.3)';
+        
+        setTimeout(()=>{
+            heart.style.transform = 'translate(-50%,-50%) scale(1)';
+            heartFillonDoubleTap();
+        },300)
+        setTimeout(()=>{
+            heart.style.transform = 'translate(-50%,-50%) scale(1.3)';
+            heartFillonDoubleTap();
+        },500)
+        setTimeout(()=>{
+            heart.style.transform = 'translate(-50%,-50%) scale(0)';
+            heartFillonDoubleTap();
+        },1000)
+    }
 })
 
 heartFill.addEventListener('click',onHeartTap);
